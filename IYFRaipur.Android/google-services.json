@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "346602113086",
+    "project_id": "iyf-raipur",
+    "storage_bucket": "iyf-raipur.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:346602113086:android:2a80f0904bb6aa3862296f",
+        "android_client_info": {
+          "package_name": "com.ISKCON.IYFRaipur"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "346602113086-bn35pi54na1hg7sra2k98ne1avgcnjrs.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.ISKCON.IYFRaipur",
+            "certificate_hash": "a1550a30a5829be35fb821224f44c3541123174c"
+          }
+        },
+        {
+          "client_id": "346602113086-3ea07isd7n2f4l7cmb39n2v3t456rnrf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCn1OqGFakgtGE3t__nHUq8fI-4uzgp3Qo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "346602113086-3ea07isd7n2f4l7cmb39n2v3t456rnrf.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

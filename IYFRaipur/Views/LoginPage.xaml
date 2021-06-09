@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			 xmlns:local="clr-namespace:IYFRaipur;assembly=IYFRaipur"
+			 xmlns:viewModel="clr-namespace:IYFRaipur.ViewModels"
+			 xmlns:model="clr-namespace:IYFRaipur.Models"
+			 x:Class="IYFRaipur.Views.LoginPage"
+			 Shell.NavBarIsVisible="False"
+			 x:DataType="viewModel:LoginViewModel">
+	<ContentPage.Background>
+		<LinearGradientBrush StartPoint="0,1"
+							 EndPoint="1,0">
+			<GradientStop Color="#6c63ff"
+						  Offset="0.1"/>
+			<GradientStop Color="#f8a4d8"
+						  Offset="1.0"/>
+		</LinearGradientBrush>
+	</ContentPage.Background>
+	
+	<ContentPage.BindingContext>
+		<viewModel:LoginViewModel/>
+	</ContentPage.BindingContext>
+	
+	<StackLayout>
+
+		<StackLayout VerticalOptions="CenterAndExpand"
+					 HorizontalOptions="CenterAndExpand"
+					 Spacing="20"
+					 WidthRequest="250">
+				<Frame Padding="0"
+					   CornerRadius="8">
+					<StackLayout Orientation="Horizontal"
+								 Spacing="0">
+						<Image Source="icons8india96"
+							   HeightRequest="30"
+							   Margin="8,0,-4,0"/>
+						<Label Text="+91"
+							   TextColor="Black"
+							   FontSize="18"
+							   Padding="8,0,4,0"
+							   HorizontalOptions="Center"
+							   VerticalOptions="Center"/>
+						<local:CustomEntry  Placeholder="Phone"
+											Text="{Binding Phone}"
+											FontFamily="NuniRegular"
+											WidthRequest="172"
+											Keyboard="Numeric"/>
+					</StackLayout>
+				</Frame>
+
+				<Frame BackgroundColor="White"
+				   Padding="0"
+				   IsVisible="{Binding CodeSent}"
+				   HorizontalOptions="FillAndExpand"
+				   CornerRadius="8"
+				   x:Name="Codesent">
+
+					<local:CustomEntry Placeholder="OTP"
+									   PlaceholderColor="WhiteSmoke"
+									   Text="{Binding Code}"
+									   Margin="10,0"
+									   Keyboard="Numeric"/>
+
+				</Frame>
+			
+			
+
+			<Button Text="{Binding ButtonText}"
+					BorderWidth="1"
+					HeightRequest="45"
+					Command="{Binding NextCommand}"
+					FontFamily="NuniRegular"
+					FontSize="12"
+					CornerRadius="10"
+					HorizontalOptions="EndAndExpand"/>
+		</StackLayout>
+	</StackLayout>
+</ContentPage>

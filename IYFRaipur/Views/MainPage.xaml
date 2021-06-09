@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+			 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+			 x:Class="IYFRaipur.Views.MainPage"
+			 xmlns:local="clr-namespace:IYFRaipur.ViewModels"  
+			 x:DataType="local:MainViewModel"
+			 x:Name="BrowseItemsPage">
+	<ContentPage.Resources>
+		<ResourceDictionary>
+			<Style TargetType="Frame" ApplyToDerivedTypes="True">
+				<Setter Property="HeightRequest" Value="100"/>
+				<Setter Property="WidthRequest" Value="100"/>
+				<Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
+				<Setter Property="VerticalOptions" Value="CenterAndExpand"/>
+				<Setter Property="CornerRadius" Value="10"/>
+			</Style>
+			<Style TargetType="Label" ApplyToDerivedTypes="True">
+				<Setter Property="HeightRequest" Value="50"/>
+				<Setter Property="HorizontalOptions" Value="CenterAndExpand"/>
+				<Setter Property="VerticalOptions" Value="CenterAndExpand"/>
+				<Setter Property="FontSize" Value="Body"/>
+				<Setter Property="FontAttributes" Value="Bold"/>
+			</Style>
+		</ResourceDictionary>
+		
+	</ContentPage.Resources>
+	<StackLayout Spacing="20">
+		<Frame>
+			<Label Text="Councelor"/>
+			<Frame.GestureRecognizers>
+				<TapGestureRecognizer Command="{Binding Councelor}"/>
+			</Frame.GestureRecognizers>
+		</Frame>
+		<Frame>
+			<Label Text="Preacher"/>
+			<Frame.GestureRecognizers>
+				<TapGestureRecognizer Command="{Binding Preacher}"/>
+			</Frame.GestureRecognizers>
+		</Frame>
+		<Frame>
+			<Label Text="Facilitator"/>
+			<Frame.GestureRecognizers>
+				<TapGestureRecognizer Command="{Binding Facilitator}"/>
+			</Frame.GestureRecognizers>
+		</Frame>
+	</StackLayout>
+
+</ContentPage>
