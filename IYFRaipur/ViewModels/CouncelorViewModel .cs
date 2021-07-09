@@ -4,8 +4,6 @@ using MvvmHelpers;
 using MvvmHelpers.Commands;
 using System;
 using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Diagnostics;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
@@ -13,36 +11,69 @@ using Xamarin.Forms;
 
 namespace IYFRaipur.ViewModels
 {
-    public class PreacherViewModel : BaseViewModel
+    class CouncelorViewModel : BaseViewModel
     {
-        private ObservableRangeCollection<DataClass> facilitators;
 
-        public PreacherViewModel()
+        public ObservableRangeCollection<DataClass> Preachers { get; set; }
+        private ObservableRangeCollection<DataClass> Facilitators { get; set; }
+        public CouncelorViewModel()
         {
+            Preachers = new ObservableRangeCollection<DataClass>();
             Facilitators = new ObservableRangeCollection<DataClass>();
+            _ = GetPreachers();
         }
-        public ICommand SaveCommand => new AsyncCommand(Save);
-        public ICommand GetFacilitatorsCommand => new AsyncCommand(GetFacilitators);
 
+        public ICommand SaveCommand => new AsyncCommand(Save);
+        public ICommand GetPreachersCommand => new AsyncCommand(GetPreachers);
+        public ICommand GetFacilitatorsCommand => new AsyncCommand(GetFacilitators);
         async Task Save()
         {
             var _repository = DependencyService.Resolve<IRepository<DataClass>>();
+
             try
             {
-                var councelor = new DataClass
+                var data = new DataClass
                 {
                     UserName = UserName,
                     Name = Name,
                     Email = Email
                 };
-                await _repository.SaveCouncelor(councelor);
-                await Shell.Current.GoToAsync("..");
+
+                await _repository.SaveCouncelor(data);
+                await Shell.Current.GoToAsync("//CouncelorPage");
             }
             catch (Exception ex)
             {
                 Console.WriteLine(ex.Message);
             }
         }
+
+        //Returns Preachers collection on Councelor page
+        async Task GetPreachers()
+        {
+            try
+            {
+                var _repository = DependencyService.Get<IRepository<DataClass>>();
+                var list = await _repository.GetPreachers();
+                if (list.Count != 0)
+                {
+                    foreach (DataClass collection in list)
+                    {
+                        Preachers.Add(collection);
+                    }
+                }
+                else
+                {
+                    await Shell.Current.DisplayAlert("ERROR", "No Data Available", "ok");
+                }
+            }
+            catch (Exception ex)
+            {
+                await Shell.Current.DisplayAlert("ERROR", ex.Message, "ok");
+            }
+        }
+
+        //Returns Preachers collection on Councelor page
         async Task GetFacilitators()
         {
             try
@@ -69,17 +100,6 @@ namespace IYFRaipur.ViewModels
         }
 
         #region Properties
-        public ObservableRangeCollection<DataClass> Facilitators
-        {
-            get { return facilitators; }
-            set
-            {
-                facilitators = value;
-                OnPropertyChanged(nameof(Facilitators));
-            }
-        }
-
-
         private string name;
         public string Name
         {
@@ -90,22 +110,21 @@ namespace IYFRaipur.ViewModels
                 OnPropertyChanged(nameof(name));
             }
         }
-
-        private string userName;
+        private string userNAme;
         public string UserName
         {
-            get { return userName; }
+            get { return userNAme; }
             set
             {
-                userName = value;
+                userNAme = value;
                 OnPropertyChanged(nameof(UserName));
             }
         }
 
+
         private string email;
         public string Email
         {
-            get { return email; }
             set
             {
                 if (email != value)
@@ -114,6 +133,8 @@ namespace IYFRaipur.ViewModels
                     OnPropertyChanged("Email");
                 }
             }
+            get
+            { return email; }
         }
         #endregion
     }

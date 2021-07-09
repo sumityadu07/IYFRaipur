@@ -14,8 +14,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Compile Update="Views\CounselorPage.xaml.cs">
-      <DependentUpon>CounselorPage.xaml</DependentUpon>
+    <Compile Update="Views\CouncelorPage.xaml.cs">
+      <DependentUpon>CouncelorPage.xaml</DependentUpon>
     </Compile>
     <Compile Update="Views\FacilitatorPage.xaml.cs">
       <DependentUpon>FacilitatorPage.xaml</DependentUpon>

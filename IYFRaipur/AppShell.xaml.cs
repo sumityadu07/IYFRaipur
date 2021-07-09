@@ -19,7 +19,7 @@ namespace IYFRaipur
 
         private async void OnMenuItemClicked(object sender, EventArgs e)
         {
-            IAuthService authService = DependencyService.Resolve<IAuthService>();
+            IAuthentication authService = DependencyService.Resolve<IAuthentication>();
             authService.SignOut();
             await Shell.Current.GoToAsync("//LoginPage");
         }

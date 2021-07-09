@@ -6,13 +6,12 @@ using IYFRaipur.Droid;
 using IYFRaipur.Services;
 using System.Threading.Tasks;
 using Xamarin.Essentials;
-using Firebase.Firestore;
 using IYFRaipur.Models;
 
 [assembly: Xamarin.Forms.Dependency(typeof(AuthService))]
 namespace IYFRaipur.Droid
 {
-    public class AuthService : PhoneAuthProvider.OnVerificationStateChangedCallbacks,IAuthService
+    public class AuthService : PhoneAuthProvider.OnVerificationStateChangedCallbacks,IAuthentication
     {
         const int OTP_TIMEOUT = 30; // seconds
         private TaskCompletionSource<bool> _phoneAuthTcs;

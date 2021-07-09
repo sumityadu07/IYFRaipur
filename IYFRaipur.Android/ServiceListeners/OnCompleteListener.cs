@@ -9,9 +9,9 @@ namespace IYFRaipur.Droid.ServiceListeners
 {
     public class OnCompleteListener : Java.Lang.Object, IOnCompleteListener
     {
-        private TaskCompletionSource<User> _tcs;
+        private TaskCompletionSource<DataClass> _tcs;
 
-        public OnCompleteListener(TaskCompletionSource<User> tcs)
+        public OnCompleteListener(TaskCompletionSource<DataClass> tcs)
         {
             _tcs = tcs;
         }
@@ -24,18 +24,17 @@ namespace IYFRaipur.Droid.ServiceListeners
                 var result = task.Result;
                 if (result is DocumentSnapshot doc)
                 {
-                    var user = new User();
-                    user.Id = doc.Id;
+                    var user = new DataClass();
+                    user.UserName = doc.Id;
                     user.Email = doc.GetString("email");
-                    user.Name = doc.GetString("lastname");
-                    user.Image = doc.GetString("image");
-                    //user.AccountType = doc.GetString("accountType");
+                    user.Name = doc.GetString("firstname");
+                    //user.Image = doc.GetString("image");
                     _tcs.TrySetResult(user);
                     return;
                 }
             }
             // something went wrong
-            _tcs.TrySetResult(default(User));
+            _tcs.TrySetResult(default(DataClass));
         }
     }
 }

@@ -13,20 +13,18 @@ namespace IYFRaipur.ViewModels
 {
     public class MainViewModel : BaseViewModel
     {
-        IUserData userData = DependencyService.Resolve<IUserData>();
         public MainViewModel()
         {
             IsUserSignedInAsync();
         }
         async void IsUserSignedInAsync()
         {
-            var authService = DependencyService.Resolve<IAuthService>();
+            var authService = DependencyService.Resolve<IAuthentication>();
             if (!authService.IsSignIn())
             {
                 await Shell.Current.GoToAsync("//LoginPage");
             }
         }
-
 
         public ICommand Councelor => new AsyncCommand(GoToCouncelorPage);
         public ICommand Preacher => new AsyncCommand(GoToPreacherPage);
@@ -38,20 +36,10 @@ namespace IYFRaipur.ViewModels
         }
         async Task GoToPreacherPage()
         {
-            try
-            {
-                userData.Save("Preacher");
-                await Shell.Current.GoToAsync(nameof(PreacherPage));
-            }
-            catch (System.Exception ex)
-            {
-                Debug.WriteLine($"Unable to get Data: {ex.Message}");
-                await Application.Current.MainPage.DisplayAlert("Error!", ex.Message, "OK");
-            }
+            await Shell.Current.GoToAsync(nameof(PreacherPage));
         }
         async Task GoToFacilitatorPage()
         {
-            userData.Save("Facilitator");
             await Shell.Current.GoToAsync(nameof(FacilitatorPage));
         }
     }

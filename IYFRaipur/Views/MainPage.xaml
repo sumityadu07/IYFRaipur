@@ -37,6 +37,7 @@
 				<TapGestureRecognizer Command="{Binding Preacher}"/>
 			</Frame.GestureRecognizers>
 		</Frame>
+        
 		<Frame>
 			<Label Text="Facilitator"/>
 			<Frame.GestureRecognizers>

@@ -19,7 +19,7 @@ namespace IYFRaipur.ViewModels
         private bool codeSent;
         private string buttonText = "Next";
         public bool codeRequested;
-        IAuthService authService = DependencyService.Resolve<IAuthService>();
+        IAuthentication authService = DependencyService.Resolve<IAuthentication>();
         #endregion
         async Task OnNextAction()
         {
@@ -33,7 +33,6 @@ namespace IYFRaipur.ViewModels
                 if (codeVerified)
                 {
                     await Shell.Current.GoToAsync("//MainPage");
-
                 }
                 await Shell.Current.DisplayAlert("ERROR", "Please choose the type of account you are logging to", "OK");
 

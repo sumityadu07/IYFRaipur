@@ -6,13 +6,13 @@ namespace IYFRaipur.Views
 {
     public partial class CounselorPage : ContentPage
     {
-        CounselorViewModel _viewModel;
+        CouncelorViewModel _viewModel;
 
         public CounselorPage()
         {
             InitializeComponent();
 
-            BindingContext = _viewModel = new CounselorViewModel();
+            BindingContext = _viewModel = new CouncelorViewModel();
         }
 
     }

@@ -2,7 +2,7 @@
 
 namespace IYFRaipur.Services
 {
-    public interface IAuthService
+    public interface IAuthentication
     {
         void SignOut();
 

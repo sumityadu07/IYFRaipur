@@ -14,7 +14,7 @@ namespace IYFRaipur.Droid.Extensions
             {
                 var jsonStr = Newtonsoft.Json.JsonConvert.SerializeObject(doc.Data.ToDictionary());
                 var item = Newtonsoft.Json.JsonConvert.DeserializeObject<T>(jsonStr);
-                item.Id = doc.Id;
+                item.UserName = doc.Id;
                 return item;
             }
             catch (Exception)
